@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create Account &amp; Login | KR7Tech</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="account.css" />
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Your KR7Tech account</p>
+      <h1>One account.<br /><span>Your learning journey.</span></h1>
+      <p class="hero-copy">Create your account to purchase a plan and return to your learning anytime. Already registered? Log in with your username and password.</p>
+    </section>
+    <section class="content-section account-panel" aria-labelledby="account-heading">
+      <h2 id="account-heading">Create account or Login</h2>
+      <p id="account-status" role="status" aria-live="polite">Checking sign-in availability...</p>
+      <div id="password-account-panel" hidden>
+        <form id="password-signup-form">
+          <label for="signup-username">Choose a username</label>
+          <input id="signup-username" name="username" autocomplete="username" pattern="[A-Za-z][A-Za-z0-9_]{2,31}" minlength="3" maxlength="32" required />
+          <p class="muted">3-32 letters, numbers or underscores, starting with a letter.</p>
+          <label for="signup-password">Choose a password</label>
+          <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="15" maxlength="256" required />
+          <p class="muted">Use at least 15 characters. A memorable passphrase with spaces is welcome. Keep it safe: username-only accounts do not yet have email password recovery.</p>
+          <p class="muted">Your account starts Free. Choose Go or Pro whenever you are ready to unlock more.</p>
+          <p class="muted">By creating an account, you agree to the <a href="Terms.html">Terms of Use</a> and acknowledge the <a href="Privacy.html">Privacy notice</a>.</p>
+          <button type="submit">Create account</button>
+        </form>
+        <p id="password-existing-account"><button id="password-show-login" class="secondary" type="button">Already have an account? Login</button></p>
+        <form id="password-login-form" hidden>
+          <label for="login-username">Username</label>
+          <input id="login-username" name="username" autocomplete="username" maxlength="32" required />
+          <label for="login-password">Password</label>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" maxlength="256" required />
+          <button type="submit">Login</button>
+        </form>
+        <p id="password-new-account" hidden><button id="password-show-signup" class="secondary" type="button">New here? Create account</button></p>
+      </div>
+      <p class="muted">Use the same account for your learning and purchases. <a href="Contact.html">Need help?</a></p>
+    </section>
+    <section id="account-dashboard" class="content-section account-panel" aria-labelledby="dashboard-heading" hidden>
+      <p class="eyebrow">Welcome back</p><h2 id="dashboard-heading">Your learning dashboard</h2>
+      <p id="account-identity"></p>
+      <div class="actions"><a id="account-continue" class="button" href="My-Learning.html" hidden>Continue learning</a><a class="button secondary" href="Purchase.html">My purchases</a></div>
+      <dl class="account-details"><dt>Role</dt><dd id="account-current-role"></dd><dt>Plan</dt><dd id="account-current-plan"></dd><dt>Account ID</dt><dd id="account-id"></dd></dl>
+      <div id="account-paths" class="account-paths"></div>
+      <nav class="learning-sections" data-learning-sections aria-label="Learning sections"></nav>
+      <p><a href="Membership.html">Grab 50% off INR memberships: Go (&#8377;750) and Pro (&#8377;2,500)</a>. PayPal USD prices are separate.</p>
+      <form id="account-password-setup" hidden>
+        <h3>Enable username/password login</h3>
+        <p class="muted">Add login details to your existing signed-in account without losing its purchases or learning role.</p>
+        <label for="setup-username">Choose a username</label>
+        <input id="setup-username" autocomplete="username" pattern="[A-Za-z][A-Za-z0-9_]{2,31}" minlength="3" maxlength="32" required />
+        <label for="setup-password">Choose a password</label>
+        <input id="setup-password" type="password" autocomplete="new-password" minlength="15" maxlength="256" required />
+        <label for="setup-confirm-password">Confirm password</label>
+        <input id="setup-confirm-password" type="password" autocomplete="new-password" minlength="15" maxlength="256" required />
+        <button type="submit">Save login details</button>
+      </form>
+      <button id="account-sign-out" type="button">Sign out</button>
+    </section>
+    <section id="account-admin" class="content-section account-panel" aria-labelledby="account-admin-heading" hidden>
+      <h2 id="account-admin-heading">Administrator: allocate access</h2>
+      <p>Use the ID shown in a learner's dashboard. Users cannot grant themselves roles or paid access. Administrators are configured privately by the owner.</p>
+      <form id="account-admin-form">
+        <label for="account-target-id">Learner account ID</label><input id="account-target-id" type="text" required maxlength="36" />
+        <label for="account-target-role">Learning role</label><select id="account-target-role"><option value="student">Student</option><option value="expert">Expert</option></select>
+        <button type="submit">Assign learning role</button>
+        <label for="account-target-plan">Paid access</label><select id="account-target-plan"><option>Go</option><option>Pro</option></select>
+        <button id="account-grant-plan" type="button">Grant selected plan</button>
+        <button id="account-revoke-plan" class="secondary" type="button">Revoke selected plan</button>
+      </form>
+      <p id="account-admin-status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script src="learning-sections.js" defer></script>
+  <script src="account.js" defer></script>
+  <script src="pro-access.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "visual-memory-lab",
+  "version": "1.0.0",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-production.js",
+    "package:godaddy": "node scripts/package-godaddy.js",
+    "build:vercel": "node scripts/build-vercel.js",
+    "build:questions": "node scripts/build-subject-questions.js",
+    "seed:mongodb": "node scripts/seed-mongodb.js",
+    "setup:local-admin": "node scripts/setup-local-admin.js",
+    "setup:local-preview": "node scripts/setup-local-preview.js",
+    "preview:local": "node scripts/local-preview.js",
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node --test --test-concurrency=1 tests/*.browser.js"
+  },
+  "engines": {
+    "node": "22.x || 24.x"
+  },
+  "dependencies": {
+    "acorn": "^8.15.0",
+    "mongodb": "^6.21.0",
+    "parse5": "^7.3.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  }
+}

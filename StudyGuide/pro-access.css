@@ -1,0 +1,6 @@
+.global-pro-access { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px 14px; width:100%; box-sizing:border-box; padding:12px 16px; border-bottom:1px solid #526b87; background:#101f30; color:#f0f6ff; font:14px/1.5 "Segoe UI",sans-serif; }
+.global-pro-access p { margin:0; color:#c2d2e6; }
+.global-pro-access button { width:auto; min-height:40px; padding:8px 14px; border:0; border-radius:8px; background:#83e9cc; color:#082b23; cursor:pointer; font:700 14px/1.5 "Segoe UI",sans-serif; }
+.global-pro-access a { color:#b6d6ff; font-weight:700; }
+.global-pro-access :focus-visible { outline:3px solid #fff; outline-offset:3px; }
+@media print { .global-pro-access { display:none; } }

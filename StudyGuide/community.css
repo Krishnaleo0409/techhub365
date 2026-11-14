@@ -1,0 +1,27 @@
+.community-form fieldset { display:grid; gap:18px; }
+.community-form label { display:grid; gap:6px; font-weight:700; }
+.community-form input:not([type=checkbox]), .community-form select, .community-form textarea { width:100%; min-width:0; min-height:44px; padding:10px; border:1px solid var(--line); border-radius:8px; background:var(--page); color:var(--ink); font:inherit; }
+.community-form textarea { min-height:140px; resize:vertical; }
+.community-form .consent { display:flex; align-items:flex-start; gap:10px; font-weight:400; }
+.community-form input[type=checkbox] { width:18px; height:18px; flex-shrink:0; margin-top:5px; accent-color:var(--brand); }
+.community-form [role=status] { overflow-wrap:anywhere; }
+.learning-encouragement { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:24px; padding:clamp(20px,3vw,30px); border:1px solid var(--line); border-radius:16px; background:linear-gradient(120deg,#193c35,var(--surface)); }
+.learning-encouragement h3 { margin:0 0 8px; font-size:1.1rem; }
+.learning-encouragement p { margin:0; color:var(--muted); }
+.feedback-subheading { margin-top:32px; font-size:1.4rem; }
+.feedback-card { gap:18px; overflow-wrap:anywhere; }
+.feedback-card-header { display:flex; align-items:center; gap:12px; min-width:0; }
+.feedback-avatar { display:grid; place-items:center; width:46px; height:46px; border-radius:50%; flex-shrink:0; background:#5543ef; color:#fff; font-weight:800; letter-spacing:.04em; }
+.feedback-card .feedback-name { margin:0; font-size:1.05rem; }
+.feedback-card .feedback-source { margin:0; font-size:.8rem; }
+.feedback-stars { display:flex; align-items:center; gap:5px; }
+.feedback-star { display:block; width:16px; height:16px; background:var(--line); clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 94%,50% 72%,21% 94%,32% 57%,2% 35%,39% 35%); }
+.feedback-star.filled { background:var(--accent); }
+.feedback-card blockquote { margin:0; white-space:pre-wrap; font-size:1.05rem; line-height:1.7; }
+.feedback-card .feedback-consent { margin:auto 0 0; padding-top:16px; border-top:1px solid var(--line); font-size:.8rem; }
+.feedback-empty { grid-column:1 / -1; width:100%; padding:28px; border:1px dashed var(--line); border-radius:14px; background:var(--surface); }
+.feedback-empty h3 { margin:0 0 8px; }
+.feedback-empty p { margin:0; color:var(--muted); }
+.feedback-prompt { max-width:860px; padding:20px; margin-bottom:24px; border-left:3px solid var(--brand); background:var(--surface); }
+.feedback-prompt h3 { margin-top:0; }
+.feedback-prompt p:last-child { margin-bottom:0; color:var(--muted); }

@@ -1,0 +1,26 @@
+.support-launcher { position:fixed; right:14px; bottom:14px; z-index:100; max-width:calc(100% - 28px); padding:12px 16px; border:1px solid #8aebd0; border-radius:24px; background:#103a31; color:#e7fff8; box-shadow:0 6px 24px #0005; cursor:pointer; font:700 14px/1.5 "Segoe UI",sans-serif; }
+.support-panel { position:fixed; right:12px; bottom:78px; z-index:101; width:min(390px,calc(100% - 24px)); max-height:calc(100dvh - 100px); overflow:auto; padding:16px; border:1px solid #5e7d9d; border-radius:16px; background:#101f30; color:#eff6ff; box-shadow:0 8px 40px #0008; font:14px/1.55 "Segoe UI",sans-serif; }
+.support-panel[hidden] { display:none !important; }
+.support-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.support-header h2 { margin:0; color:#83e9cc; font-size:18px; }
+.support-panel button { width:auto; min-height:38px; padding:8px 12px; border:1px solid #5e7d9d; border-radius:9px; background:#1b324b; color:#f1f7ff; cursor:pointer; font:inherit; }
+.support-panel button:disabled { opacity:.55; cursor:wait; }
+.support-panel a { color:#9debd8; }
+.support-disclosure { display:block; margin-top:14px; color:#bcd3ec; font-size:12px; }
+.support-suggestions { display:flex; flex-wrap:wrap; gap:7px; }
+.support-suggestions button { text-align:left; }
+.support-question, .support-answer, .support-typing { padding:10px 12px; border-radius:10px; overflow-wrap:anywhere; }
+.support-question { background:#234564; }
+.support-answer { background:#153d34; }
+.support-typing { color:#bcd3ec; animation:support-thinking 1.2s ease-in-out infinite alternate; }
+.support-callback { margin-top:14px; border-top:1px solid #3c526a; padding-top:12px; }
+.support-callback summary { cursor:pointer; font-weight:700; }
+.support-callback fieldset { display:grid; gap:12px; min-width:0; margin:14px 0; border:1px solid #3c526a; }
+.support-callback label { display:grid; gap:6px; }
+.support-callback input:not([type=checkbox]) { min-width:0; width:100%; min-height:40px; padding:8px; border:1px solid #5e7d9d; border-radius:7px; background:#0b1724; color:#f1f7ff; font:inherit; }
+.support-callback .support-consent { display:flex; align-items:flex-start; gap:8px; }
+.support-consent input { flex-shrink:0; margin-top:5px; }
+.support-panel :focus-visible, .support-launcher:focus-visible { outline:3px solid #83e9cc; outline-offset:3px; }
+@keyframes support-thinking { to { opacity:.55; } }
+@media (prefers-reduced-motion:reduce) { .support-typing { animation:none; } }
+@media print { [data-support-widget] { display:none; } }

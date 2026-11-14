@@ -1,0 +1,21 @@
+.concept-search { display:grid; gap:8px; max-width:760px; font-weight:700; }
+.concept-search input { width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:9px; color:var(--ink); background:var(--surface); }
+.concept-filters { display:flex; flex-wrap:wrap; gap:9px; margin:22px 0; }
+.concept-filters .button { font-size:.83rem; }
+.concept-card .button { margin-top:auto; }
+.concept-reader { margin-top:28px; padding:clamp(20px,4vw,40px); border:1px solid var(--brand); border-radius:16px; background:var(--surface); overflow-wrap:anywhere; }
+.concept-reader h2 { font-size:clamp(1.7rem,4vw,2.4rem); line-height:1.2; margin-top:14px; }
+.concept-reader h3 { margin-top:30px; color:var(--brand); }
+.concept-reader p, .concept-reader li { max-width:86ch; }
+.concept-reader pre { white-space:pre; overflow:auto; max-width:100%; padding:18px; border:1px solid var(--line); border-radius:10px; background:var(--page); font-size:.9rem; }
+.concept-flow { padding:16px; border-left:3px solid var(--brand); background:var(--page); white-space:pre-wrap; overflow-wrap:anywhere; }
+.concept-cheat { padding:18px 24px; border:1px solid var(--line); border-radius:10px; }
+.concept-close { margin-top:24px; }
+.concept-path { padding:22px; margin:22px 0; border:1px solid var(--line); border-left:4px solid #60a5fa; border-radius:12px; background:var(--surface); overflow-wrap:anywhere; }
+.concept-path h3 { margin-top:0; }
+.concept-path p { color:var(--muted); }
+.concept-path-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:10px 32px; padding-left:24px; }
+.concept-path-list li, .concept-steps li { padding:4px 0; }
+.concept-path-list a { display:inline-block; padding:3px 0; }
+.concept-card { scroll-margin-top:24px; }
+.concept-steps { max-width:86ch; padding-left:24px; }

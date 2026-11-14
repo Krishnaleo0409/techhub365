@@ -1,0 +1,32 @@
+Company logos identify independent interview-preparation topics only.
+They do not indicate affiliation, endorsement, recruitment, or placement.
+Company names and marks belong to their respective owners.
+
+The following downloaded SVG versions are marked PD-textlogo (public domain
+simple text/geometric logos) by Wikimedia Commons. Trademark restrictions
+are separate from copyright. Files are stored locally without recoloring.
+Some assets are historical wordmark versions, not a claim of latest branding.
+
+microsoft.svg
+https://commons.wikimedia.org/wiki/File:Microsoft_logo.svg
+https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg
+
+google.svg
+https://commons.wikimedia.org/wiki/File:Google_2015_logo.svg
+https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg
+
+amazon.svg
+https://commons.wikimedia.org/wiki/File:Amazon_logo.svg
+https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg
+
+infosys.svg
+https://commons.wikimedia.org/wiki/File:Infosys_logo.svg
+https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg
+
+tcs.svg
+https://commons.wikimedia.org/wiki/File:Tcs-logo-1.svg
+https://upload.wikimedia.org/wikipedia/commons/2/29/Tcs-logo-1.svg
+
+accenture.svg
+https://commons.wikimedia.org/wiki/File:Accenture.svg
+https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg

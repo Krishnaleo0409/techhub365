@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Angular + .NET Fullstack: 0-5 Year Concept Cluster | KR7Tech</title>
+  <meta name="description" content="A dedicated Angular and ASP.NET Core concept path for 0-5 years: foundations, feature delivery, production engineering, and an OrderDesk capstone." />
+  <link rel="stylesheet" href="site.css" />
+  <link rel="stylesheet" href="concepts.css" />
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Dedicated learning cluster &middot; 0-5 years</p>
+      <h1>Angular + .NET.<br /><span>One complete fullstack path.</span></h1>
+      <p class="hero-copy">Understand the concepts, build a working feature, then learn to operate it reliably. Follow 18 ordered lessons across Angular, TypeScript, C#, ASP.NET Core, EF Core, SQL, testing, security, and delivery. This is concept learning, not an interview question bank.</p>
+      <div class="actions">
+        <a class="button" href="?lesson=fullstack-foundation-web#concept-library">Start with foundations</a>
+        <a class="button secondary" href="#experience-stages">Choose your stage</a>
+        <a class="button secondary" href="#capstone">Explore the capstone</a>
+      </div>
+      <p class="hero-note">Experience bands guide depth, not eligibility. Start earlier wherever a checkpoint exposes a gap. The roadmap and lesson outlines are public; Go includes the first two lessons in this cluster, Pro includes all, and an owner's item PIN opens one lesson separately.</p>
+    </section>
+    <nav class="learning-sections" data-learning-sections aria-label="Learning sections"></nav>
+    <section class="content-section" id="experience-stages" aria-labelledby="stages-heading">
+      <h2 class="section-heading" id="stages-heading">Three stages. One connected application.</h2>
+      <p class="section-copy">Use the same OrderDesk product-and-order feature throughout. Complete the exit check before increasing the complexity. No production access or paid cloud subscription is required to read the path.</p>
+      <div class="offering-grid">
+        <article class="offering-card" id="foundation-stage">
+          <span class="badge">0-1 years &middot; Lessons 01-06</span>
+          <h3>Foundations: make the request flow visible</h3>
+          <p>Begin with HTML/CSS, TypeScript, C#, HTTP, and relational basics. Connect Angular components to a small API and a real lab database.</p>
+          <ul><li>Browser-to-database flow and JSON contracts</li><li>Components, signals, and state ownership</li><li>C# objects, collections, and invariants</li><li>ASP.NET Core routing, DI, and middleware</li><li>SQL keys, EF Core, migrations, and CRUD</li></ul>
+          <p><strong>Exit check:</strong> create one valid order, restart the API, read it again, and explain an invalid request without hiding its error.</p>
+          <a class="button secondary compact" href="?lesson=fullstack-foundation-web#concept-library">Go to foundation concepts</a>
+        </article>
+        <article class="offering-card" id="delivery-stage">
+          <span class="badge">1-3 years &middot; Lessons 07-12</span>
+          <h3>Feature delivery: handle real user behavior</h3>
+          <p>Build predictable forms and request lifecycles. Make permission checks and failures part of the feature, not a later patch.</p>
+          <ul><li>API services and safe error contracts</li><li>RxJS search, cancellation, and stale responses</li><li>Typed reactive forms and server validation</li><li>Routing, resource permissions, and sessions</li><li>Component, contract, and API integration tests</li></ul>
+          <p><strong>Exit check:</strong> demonstrate a corrected form, a recovered 503, and two users who cannot access each other's orders.</p>
+          <a class="button secondary compact" href="?lesson=fullstack-delivery-contracts#concept-library">Go to delivery concepts</a>
+        </article>
+        <article class="offering-card" id="production-stage">
+          <span class="badge">3-5 years &middot; Lessons 13-18</span>
+          <h3>Production depth: prove safe recovery</h3>
+          <p>Measure the query, recover conflicting edits, prevent duplicate writes, and release a design you can explain and observe.</p>
+          <ul><li>Projection, indexes, pagination, and budgets</li><li>Optimistic concurrency and two-editor recovery</li><li>Idempotency, retries, and durable side effects</li><li>Modular HLD and practical LLD</li><li>CI/CD, tracing, configuration, and rollback</li></ul>
+          <p><strong>Exit check:</strong> recover a stale edit and a lost response, prove one durable order, and demonstrate a compatible application rollback.</p>
+          <a class="button secondary compact" href="?lesson=fullstack-production-performance#concept-library">Go to production concepts</a>
+        </article>
+      </div>
+    </section>
+    <section class="content-section" id="capstone" aria-labelledby="capstone-heading">
+      <h2 class="section-heading" id="capstone-heading">Capstone: OrderDesk</h2>
+      <p class="section-copy">Build a separate Angular application and ASP.NET Core API with a relational database. KR7Tech provides the curriculum and exercises; it does not pretend this capstone is already installed or deployed for you.</p>
+      <pre class="concept-flow">Angular product/order views -> HTTP contracts -> ASP.NET Core
+  -> authorized order behavior -> EF Core -> relational database
+  -> explicit result/error -> usable view state</pre>
+      <div class="offering-grid">
+        <article class="offering-card"><h3>Build in vertical slices</h3><p>Product list, validated order creation, persistent read-back, owner-only access, editing, then deliberate concurrency and retry behavior.</p></article>
+        <article class="offering-card"><h3>Keep evidence, not just screenshots</h3><p>Produce a request trace, DTO contract, schema diagram, permission matrix, focused tests, HLD/LLD diagrams, and a short recovery runbook in your own lab repository.</p></article>
+        <article class="offering-card"><h3>Daily study loop</h3><p>Read one concept, trace its flow, implement a small slice, break one boundary, and record what proves recovery. Move on when you can demonstrate the checkpoint, not after memorizing an answer.</p></article>
+      </div>
+      <p class="hero-note">Examples are teaching fragments for your separate lab, not complete production identity, payment, or deployment implementations. Use supported framework versions and the official references in each lesson.</p>
+    </section>
+    <section class="content-section" id="concept-library" data-concept-category="Angular + .NET Fullstack" aria-labelledby="concept-heading">
+      <h2 class="section-heading" id="concept-heading">Your ordered fullstack concept lessons</h2>
+      <p class="section-copy">Every full lesson explains what, why, how, a step-by-step flow, a worked example, pitfalls, and an exercise. This cluster stays focused on Angular + .NET; other subject lessons remain in the main Concept Library.</p>
+      <label class="concept-search" for="concept-search">Find a fullstack concept
+        <input id="concept-search" type="search" placeholder="Try forms, middleware, concurrency, or rollback" maxlength="160" />
+      </label>
+      <nav class="concept-filters" id="concept-categories" aria-label="Fullstack concept category"></nav>
+      <section id="concept-learning-path" class="concept-path" aria-labelledby="concept-path-title" hidden></section>
+      <p id="concept-status" role="status" aria-live="polite">Loading fullstack concept outlines...</p>
+      <div class="offering-grid" id="concept-results"></div>
+      <article id="concept-reader" class="concept-reader" aria-labelledby="concept-reader-title" hidden></article>
+      <noscript><p>JavaScript is required for individual lesson outlines and the protected reader. The stage roadmap and capstone above remain readable.</p></noscript>
+    </section>
+    <section class="content-section" aria-labelledby="next-heading">
+      <h2 class="section-heading" id="next-heading">Keep learning and interview practice separate</h2>
+      <div class="actions">
+        <a class="button secondary" href="Concepts.html?category=Angular">Angular deep dives</a>
+        <a class="button secondary" href="Concepts.html?category=.NET">.NET deep dives</a>
+        <a class="button secondary" href="Subject-QA.html?topic=Angular">Angular interview Q&amp;A</a>
+        <a class="button secondary" href="Subject-QA.html?topic=C%23%20%2F%20.NET">C# / .NET interview Q&amp;A</a>
+      </div>
+    </section>
+  </main>
+  <script src="learning-sections.js" defer></script>
+  <script src="concept-paths.js" defer></script>
+  <script src="concepts.js" defer></script>
+  <script src="pro-access.js" defer></script>
+</body>
+</html>

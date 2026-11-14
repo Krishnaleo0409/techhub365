@@ -1,0 +1,9 @@
+supabase/
+react-machine-coding-seed.sql
+experience-questions-seed.sql
+README.md
+DEPLOYMENT.md
+tests/
+scripts/build-subject-questions.js
+scripts/import-guide-questions.js
+.env*

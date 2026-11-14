@@ -1,0 +1,20 @@
+.company-strip { min-width:0; margin:48px 0; padding:28px 0; overflow:hidden; border:1px solid #34465e; border-radius:18px; background:#132235; color:#edf3fc; }
+.company-strip-header { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; padding:0 24px 22px; }
+.company-strip-kicker { margin:0 0 6px; color:#7eb9ff; font-size:.72rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+.company-strip h2 { margin:0; color:#edf3fc; font-size:clamp(1.3rem,3vw,1.85rem); line-height:1.3; letter-spacing:-.03em; }
+.company-strip-viewport { overflow:hidden; mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent); }
+.company-strip-viewport:focus-visible { outline:3px solid #7eb9ff; outline-offset:-3px; }
+.company-strip-track { display:flex; width:max-content; animation:company-drift 32s linear infinite; }
+.company-strip-group { display:flex; flex-shrink:0; align-items:center; gap:16px; margin:0; padding:0 16px 0 0; list-style:none; }
+.company-strip-logo { display:flex; flex:0 0 180px; align-items:center; justify-content:center; gap:10px; width:180px; height:88px; padding:18px; border:1px solid #dbe3ec; border-radius:12px; background:#fff; color:#414141; font:600 1.15rem/1.2 "Segoe UI",sans-serif; }
+.company-strip-logo img { display:block; width:140px; height:44px; object-fit:contain; }
+.company-strip-logo .company-symbol { width:27px; height:27px; }
+.company-strip-note { margin:20px 24px 0; color:#bac9dc; font-size:.8rem; line-height:1.7; }
+.company-strip-note a { color:#85e7cb; font-weight:700; }
+.company-strip-viewport:focus-visible .company-strip-track { animation-play-state:paused; }
+@keyframes company-drift { to { transform:translateX(-50%); } }
+@media (prefers-reduced-motion:reduce) {
+  .company-strip-track { animation:none; }
+  .company-strip-group[aria-hidden="true"] { display:none !important; }
+  .company-strip-viewport { overflow-x:auto; mask-image:none; }
+}

@@ -1,0 +1,19 @@
+<div id="preview-registration" hidden>
+  <h3 id="preview-registration-heading">Create your local account</h3>
+  <p id="preview-registration-note" class="muted">Accounts are saved privately on this computer, not in MongoDB. Email is not verified in this offline preview.</p>
+  <form id="preview-registration-form">
+    <label for="preview-username">Username</label>
+    <input id="preview-username" name="username" autocomplete="username" pattern="[A-Za-z][A-Za-z0-9_]{2,31}" minlength="3" maxlength="32" required />
+    <label for="preview-email">Email address (local preview only)</label>
+    <input id="preview-email" name="email" type="email" autocomplete="email" maxlength="254" required />
+    <label for="preview-password">Password</label>
+    <input id="preview-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="256" required />
+    <label for="preview-confirm-password">Confirm password</label>
+    <input id="preview-confirm-password" type="password" autocomplete="new-password" minlength="8" maxlength="256" required />
+    <div id="preview-learning-role">
+      <label for="preview-role">Learning role</label>
+      <select id="preview-role" name="role"><option value="student">Student</option><option value="expert">Expert</option></select>
+    </div>
+    <button id="preview-create-account" type="submit">Create account &amp; sign in</button>
+  </form>
+</div>

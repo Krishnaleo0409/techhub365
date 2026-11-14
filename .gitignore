@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 node_modules/
 .vercel/
 .env*
 !.env.example
 .local-preview/
 .godaddy/
+=======
+node_modules/
+.vercel/
+.env*
+!.env.example
+.local-preview/
+.godaddy/
+>>>>>>> 5855e6cdc4431f1a988e17847c88ae6d81a2f2cd

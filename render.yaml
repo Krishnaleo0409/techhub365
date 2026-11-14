@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
   - type: web
     name: kr7tech
@@ -25,3 +26,32 @@ services:
         value: gemini-2.5-flash
       - key: AI_INTERVIEW_ALLOW_ANONYMOUS
         value: "false"
+=======
+services:
+  - type: web
+    name: kr7tech
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: StudyGuide
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "24"
+      - key: SUPABASE_URL
+        value: https://zhzcmykfzeooadngrnyc.supabase.co
+      - key: PUBLIC_APP_URL
+        sync: false
+      - key: PRO_ACCESS_SECRET
+        generateValue: true
+      - key: COMMUNITY_FORM_SECRET
+        generateValue: true
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: AI_INTERVIEW_ALLOW_ANONYMOUS
+        value: "false"
+>>>>>>> 5855e6cdc4431f1a988e17847c88ae6d81a2f2cd

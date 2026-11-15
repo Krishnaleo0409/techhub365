@@ -1,89 +1,74 @@
-(function (root) {
-  "use strict";
+"use strict";
 
-  function formatResult(result, expectedOutput) {
-    const labels = {
-      pass: "PASS", fail: "FAIL - output did not match", compile_error: "COMPILE ERROR",
-      runtime_error: "RUNTIME ERROR", timed_out: "TIME LIMIT EXCEEDED", error: "COMPILER ERROR",
-    };
-    const parts = [labels[result.state] || result.status || "Unknown compiler result"];
-    if (result.compileOutput) parts.push(`Compiler output:\n${result.compileOutput}`);
-    if (result.stderr) parts.push(`Standard error:\n${result.stderr}`);
-    if (result.stdout || result.state === "fail") parts.push(`Actual output:\n${result.stdout || ""}`);
-    if (result.time != null) parts.push(`Time: ${result.time}s`);
-    if (result.memory != null) parts.push(`Memory: ${result.memory} KB`);
-    parts.push(`Expected output:\n${expectedOutput}`);
-    parts.push("Result for the submitted code and test input, not hidden judge tests. Rerun after editing.");
-    return parts.join("\n\n");
+const assert = require("node:assert/strict");
+const test = require("node:test");
+const { createRunner } = require("../coding-runner");
+const result = body => ({ ok: true, json: async () => body });
+const sample = { language: "python", sourceCode: "print(2)", stdin: "", expectedOutput: "2" };
+const tick = () => new Promise(resolve => setImmediate(resolve));
+
+test("runner submits the captured program and reports the captured expectation after async polling", async () => {
+  const output = [], busy = [], calls = [];
+  let release;
+  const configuration = new Promise(resolve => { release = resolve; });
+  const runner = createRunner({
+    onOutput: (text, state) => output.push({ text, state }), onBusy: state => busy.push(state),
+    delay: async () => {},
+    fetch: async (url, options) => {
+      calls.push({ url, options });
+      if (url === "/api/config") return configuration;
+      if (options.method === "POST") return result({ state: "pending", token: "submission-1" });
+      return result({ state: "pass", stdout: "2\n", time: "0.01", memory: 100 });
+    },
+  });
+  const snapshot = { ...sample };
+  const running = runner.run(snapshot);
+  snapshot.sourceCode = "changed code";
+  snapshot.expectedOutput = "changed expectation";
+  release(result({ compilerConfigured: true }));
+  await running;
+  assert.deepEqual(JSON.parse(calls[1].options.body), sample);
+  assert.match(output.at(-1).text, /Expected output:\n2/);
+  assert.doesNotMatch(output.at(-1).text, /changed expectation/);
+  assert.equal(output.at(-1).state, "pass");
+  assert.equal(busy.at(-1), false);
+});
+
+test("changing problem/resetting cancels the request and ignores a late compiler response", async () => {
+  const output = [], calls = [];
+  let release;
+  const pending = new Promise(resolve => { release = resolve; });
+  const runner = createRunner({
+    onOutput: text => output.push(text), onBusy() {},
+    fetch: async (url, options) => {
+      calls.push({ url, options });
+      return url === "/api/config" ? result({ compilerConfigured: true }) : pending;
+    },
+  });
+  const running = runner.run(sample);
+  await tick();
+  assert.equal(calls.length, 2);
+  runner.cancel();
+  const count = output.length;
+  release(result({ state: "pass", stdout: "old result" }));
+  await running;
+  assert.equal(calls[1].options.signal.aborted, true);
+  assert.equal(output.length, count);
+});
+
+test("authorization and provider errors remain errors and queued jobs never become a fabricated pass", async () => {
+  for (const [submission, expected] of [
+    [{ ok: false, json: async () => ({ error: "Pro access is required to run code." }) }, /Pro access is required/],
+    [result({ state: "compile_error", compileOutput: "syntax error" }), /COMPILE ERROR/],
+    [result({ state: "pending", token: "queued" }), /still queued/],
+  ]) {
+    const output = [];
+    const runner = createRunner({
+      onOutput: (text, state) => output.push({ text, state }), onBusy() {}, delay: async () => {},
+      fetch: async url => url === "/api/config" ? result({ compilerConfigured: true }) : submission,
+    });
+    await runner.run(sample);
+    assert.match(output.at(-1).text, expected);
+    assert.notEqual(output.at(-1).state, "pass");
   }
-
-  function createRunner({ fetch: request = root.fetch.bind(root), onOutput, onBusy,
-    delay = ms => new Promise(resolve => setTimeout(resolve, ms)), now = Date.now }) {
-    let active;
-    function cancel() {
-      active?.abort();
-      active = null;
-      onBusy(false);
-    }
-    async function run(snapshot) {
-      cancel();
-      const current = new AbortController();
-      active = current;
-      const submitted = { ...snapshot };
-      const output = (text, state = "") => {
-        if (active === current) onOutput(text, state);
-      };
-      if (!submitted.expectedOutput.trim()) {
-        output("Enter the expected output for this test case before running.", "fail");
-        return;
-      }
-      onBusy(true);
-      try {
-        const options = { cache: "no-store", credentials: "same-origin", signal: current.signal };
-        output("Checking compiler configuration...");
-        const configResponse = await request("/api/config", options);
-        if (!configResponse.ok) throw new Error("Could not check compiler configuration. Try again later.");
-        const config = await configResponse.json();
-        if (active !== current) return;
-        if (!config.compilerConfigured) throw new Error("Compiler is not configured on this deployment yet. The owner must configure Judge0 before code can run.");
-        output("Submitting to Judge0...");
-        const submissionResponse = await request("/api/compile", {
-          ...options, method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(submitted),
-        });
-        const submission = await submissionResponse.json();
-        if (active !== current) return;
-        if (!submissionResponse.ok) throw new Error(submission.error || "Compiler request was rejected.");
-        const deadline = now() + 20000;
-        let result = submission;
-        for (let attempts = 0; result.state === "pending" && now() < deadline && attempts < 27; attempts++) {
-          await delay(750);
-          if (active !== current) return;
-          const response = await request(`/api/compile?token=${encodeURIComponent(submission.token)}`, options);
-          result = await response.json();
-          if (active !== current) return;
-          if (!response.ok) throw new Error(result.error || "Could not retrieve compiler result.");
-        }
-        if (result.state === "pending") {
-          output("The submission is still queued. No result is available yet. Try again later.");
-          return;
-        }
-        output(formatResult(result, submitted.expectedOutput), result.state === "pass" ? "pass" : "fail");
-      } catch (error) {
-        if (active === current && !current.signal.aborted) {
-          output(error.message || "Compiler request could not be completed.", "fail");
-        }
-      } finally {
-        if (active === current) {
-          active = null;
-          onBusy(false);
-        }
-      }
-    }
-    return { run, cancel };
-  }
-
-  const api = { createRunner, formatResult };
-  if (typeof module !== "undefined" && module.exports) module.exports = api;
-  else root.KR7Coding = api;
-})(typeof window !== "undefined" ? window : globalThis);
+});
